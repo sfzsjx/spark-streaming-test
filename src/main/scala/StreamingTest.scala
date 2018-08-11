@@ -6,7 +6,7 @@ import org.apache.spark.streaming.{ Seconds, StreamingContext }
 object StreamingTest {
   def main(args: Array[String]) {
     val sparkConf = new SparkConf().setAppName("StreamingTest").setMaster("local[3]")
-    val ssc = new StreamingContext(sparkConf,Seconds(2))
+    val ssc = new StreamingContext(sparkConf,Seconds(10))
 
     val lines = ssc.socketTextStream("master", 19999)
     val words = lines.flatMap(_.split(" "))
